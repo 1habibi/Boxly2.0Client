@@ -1,11 +1,12 @@
 import React from "react";
 import { Menu } from "antd";
-import s from "./AppMenu.module.scss";
+import { Link } from "react-router-dom";
+import { PATH } from "@/router/index.jsx";
 
 const menuItems = [
   {
-    label: "Menu1",
-    key: "menu1",
+    label: <Link to={PATH.HOME}>Home</Link>,
+    key: "home",
   },
   {
     label: "Menu2",

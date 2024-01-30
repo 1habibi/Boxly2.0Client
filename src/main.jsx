@@ -5,14 +5,7 @@ import "./styles/index.css";
 import { store } from "./store/store.js";
 import { Provider } from "react-redux";
 import { ConfigProvider } from "antd";
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
-import { Login } from "@/pages/Login/Login.jsx";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ConfigProvider

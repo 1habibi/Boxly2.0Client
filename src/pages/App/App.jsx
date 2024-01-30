@@ -1,13 +1,10 @@
 import { Layout } from "antd";
 const { Header, Footer, Content } = Layout;
 import s from "./App.module.scss";
-import Logo from "@/copmonents/Logo/index.js";
 import React from "react";
-import { AppMenu } from "@/copmonents/AppMenu/index.js";
-import { LoginGroup } from "@/copmonents/LoginGroup/index.js";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { Login } from "@/pages/Login/Login.jsx";
-import { Home } from "@/pages/Home/Home.jsx";
+import { Logo } from "@/copmonents/Logo/Logo.jsx";
+import { AppMenu } from "@/copmonents/AppMenu/AppMenu.jsx";
+import { LoginGroup } from "@/copmonents/LoginGroup/LoginGroup.jsx";
 import { routes } from "@/router/index.jsx";
 
 function App() {

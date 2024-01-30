@@ -12,7 +12,7 @@ export const LoginGroup = () => {
           Войти
         </Button>
       </Link>
-      <Link to={PATH.LOGIN}>
+      <Link to={PATH.REGISTER}>
         <Button size={"large"}>Регистрация</Button>
       </Link>
     </div>
