@@ -9,8 +9,8 @@ const menuItems = [
     key: "home",
   },
   {
-    label: "Menu2",
-    key: "menu2",
+    label: <Link to={PATH.WELCOME}>Welcome</Link>,
+    key: "welcome",
   },
   {
     label: "Menu3",
