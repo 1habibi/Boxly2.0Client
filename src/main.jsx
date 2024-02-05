@@ -6,6 +6,12 @@ import { store } from "./app/store.js";
 import { Provider } from "react-redux";
 import { ConfigProvider } from "antd";
 import { BrowserRouter } from "react-router-dom";
+import { setCredentials } from "@/features/auth/authSlice.js";
+
+const accessToken = sessionStorage.getItem("accessToken");
+if (accessToken) {
+  store.dispatch(setCredentials({ accessToken }));
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ConfigProvider

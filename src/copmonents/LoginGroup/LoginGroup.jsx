@@ -15,6 +15,17 @@ export const LoginGroup = () => {
       <Link to={PATH.REGISTER}>
         <Button size={"large"}>Регистрация</Button>
       </Link>
+      <div>
+        <Button
+          onClick={() => {
+            sessionStorage.clear("accessToken");
+            window.location.reload();
+          }}
+          size={"large"}
+        >
+          Выход
+        </Button>
+      </div>
     </div>
   );
 };

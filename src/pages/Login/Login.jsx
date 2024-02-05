@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Form, Input } from "antd";
+import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "@/features/auth/authApiSlice.js";
 import { useDispatch } from "react-redux";
@@ -10,9 +10,11 @@ import { PATH } from "@/router/index.jsx";
 export const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+
   const navigate = useNavigate();
 
   const [login, { isLoading }] = useLoginMutation();
@@ -29,12 +31,13 @@ export const Login = () => {
   const handleSubmit = async ({ email, password }) => {
     try {
       const userData = await login({ email, password }).unwrap();
-      // userData.accessToken = userData.accessToken.substring(7);
-      console.log(userData.accessToken.substring(7));
-      dispatch(setCredentials({ ...userData, email }));
+      console.log("userDataFromHandleSubmit:", userData);
+      // Сохраняем accessToken в sessionStorage
+      sessionStorage.setItem("accessToken", userData.accessToken);
+      dispatch(setCredentials({ ...userData }));
       setEmail("");
       setPassword("");
-      navigate(PATH.WELCOME);
+      navigate(PATH.HOME);
     } catch (e) {
       if (!e?.status) {
         setErrMsg("Сервер недоступен");
@@ -45,7 +48,7 @@ export const Login = () => {
       } else {
         setErrMsg("Ошибка входа");
       }
-      errRef.current.focus();
+      // errRef.current.focus();
     }
   };
 

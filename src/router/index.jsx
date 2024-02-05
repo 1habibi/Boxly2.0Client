@@ -7,6 +7,7 @@ import { NotFound } from "../pages/NotFound/NotFound.jsx";
 import { UserProfile } from "@/pages/UserProfile/UserProfile.jsx";
 import { RequierAuth } from "@/copmonents/shared/RequireAuth/RequierAuth.jsx";
 import { Welcome } from "@/pages/Welcome/Welcome.jsx";
+import { MeTest } from "@/pages/MeTest/MeTest.jsx";
 
 export const PATH = {
   HOME: "/",
@@ -14,6 +15,7 @@ export const PATH = {
   REGISTER: "/register",
   USER_PROFILE: "/user-profile",
   WELCOME: "/welcome",
+  USER_ME: "/me",
 };
 
 export const routes = () => (
@@ -25,6 +27,7 @@ export const routes = () => (
     <Route path={"*"} element={<NotFound />}></Route>
     <Route element={<RequierAuth />}>
       <Route path={"/welcome"} element={<Welcome />}></Route>
+      <Route path={"/me"} element={<MeTest />}></Route>
     </Route>
   </Routes>
 );

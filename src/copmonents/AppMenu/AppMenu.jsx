@@ -13,8 +13,8 @@ const menuItems = [
     key: "welcome",
   },
   {
-    label: "Menu3",
-    key: "menu3",
+    label: <Link to={PATH.USER_ME}>Me</Link>,
+    key: "me",
   },
 ];
 export const AppMenu = () => {
