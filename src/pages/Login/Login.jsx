@@ -3,9 +3,8 @@ import { Button, Form, Input } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "@/features/auth/authApiSlice.js";
-import { useDispatch } from "react-redux";
-import { setCredentials } from "@/features/auth/authSlice.js";
 import { PATH } from "@/router/index.jsx";
+import { useCurrentUserQuery } from "@/features/user/userApiSlice.js";
 
 export const Login = () => {
   const userRef = useRef();
@@ -16,9 +15,7 @@ export const Login = () => {
   const [errMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
-
   const [login, { isLoading }] = useLoginMutation();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     userRef.current.focus();
@@ -32,39 +29,26 @@ export const Login = () => {
     try {
       const userData = await login({ email, password }).unwrap();
       console.log("userDataFromHandleSubmit:", userData);
-      // Сохраняем accessToken в sessionStorage
       sessionStorage.setItem("accessToken", userData.accessToken);
-      dispatch(setCredentials({ ...userData }));
       setEmail("");
       setPassword("");
       navigate(PATH.HOME);
     } catch (e) {
-      if (!e?.status) {
-        setErrMsg("Сервер недоступен");
-      } else if (e.status === 400) {
-        setErrMsg("Неправильная почта или пароль");
-      } else if (e.status === 401) {
-        setErrMsg("Не авторизован");
-      } else {
-        setErrMsg("Ошибка входа");
-      }
+      setErrMsg("Неверный логин или пароль");
       // errRef.current.focus();
     }
   };
-
   const handleUserImport = (e) => {
     setEmail(e.target.value);
   };
-
   const handlePwdImport = (e) => {
     setPassword(e.target.value);
   };
 
-  const content = isLoading ? (
-    <h1>Загрузка...</h1>
-  ) : (
+  if (isLoading) return <h1>Загрузка...</h1>;
+
+  return (
     <>
-      <p ref={errRef}>{errMsg}</p>
       <Form
         name="login"
         onFinish={handleSubmit}
@@ -108,6 +92,9 @@ export const Login = () => {
             value={password}
           />
         </Form.Item>
+        <p style={{ color: "red", fontSize: "16px" }} ref={errRef}>
+          {errMsg}
+        </p>
         <Form.Item>
           <Button
             type="primary"
@@ -120,6 +107,4 @@ export const Login = () => {
       </Form>
     </>
   );
-
-  return content;
 };

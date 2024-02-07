@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { authApiSlice } from "@/features/auth/authApiSlice.js";
 
 const authSlice = createSlice({
   name: "auth",
@@ -13,6 +14,15 @@ const authSlice = createSlice({
     logOut: (state, action) => {
       state.token = null;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      authApiSlice.endpoints.login.matchFulfilled,
+      (state, action) => {
+        const { accessToken } = action.payload;
+        state.token = accessToken;
+      }
+    );
   },
 });
 
