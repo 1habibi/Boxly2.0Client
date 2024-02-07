@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Form, Input } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation } from "@/features/auth/authApiSlice.js";
+import {
+  useGetCurrentUserQuery,
+  useLoginMutation,
+} from "@/features/auth/authApiSlice.js";
 import { PATH } from "@/router/index.jsx";
-import { useCurrentUserQuery } from "@/features/user/userApiSlice.js";
 
 export const Login = () => {
   const userRef = useRef();
@@ -25,17 +27,19 @@ export const Login = () => {
     setErrMsg("");
   }, [email, password]);
 
+  const { data: user, refetch: getCurrentUser } = useGetCurrentUserQuery();
+
   const handleSubmit = async ({ email, password }) => {
     try {
       const userData = await login({ email, password }).unwrap();
       console.log("userDataFromHandleSubmit:", userData);
-      sessionStorage.setItem("accessToken", userData.accessToken);
+      const userDetails = await getCurrentUser().unwrap();
+      console.log("userDetailsFromHandleSubmit:", userDetails);
       setEmail("");
       setPassword("");
       navigate(PATH.HOME);
     } catch (e) {
       setErrMsg("Неверный логин или пароль");
-      // errRef.current.focus();
     }
   };
   const handleUserImport = (e) => {

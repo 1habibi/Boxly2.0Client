@@ -5,7 +5,8 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BACKEND_BASE_URL,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
-    const token = getState().auth.token;
+    // const token = getState().auth.token;
+    const token = sessionStorage.getItem("accessToken");
     if (token) {
       headers.set("authorization", `${token}`);
     }

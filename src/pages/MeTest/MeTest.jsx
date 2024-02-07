@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useCurrentUserQuery } from "@/features/user/userApiSlice.js";
+import { useGetCurrentUserQuery } from "@/features/auth/authApiSlice.js";
 
 export const MeTest = () => {
-  const { data, isLoading, error } = useCurrentUserQuery();
+  const { data, isLoading, error } = useGetCurrentUserQuery();
 
   // Обработайте состояния загрузки, ошибки и отображение данных
   if (isLoading) return <div>Loading...</div>;

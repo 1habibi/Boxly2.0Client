@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { useCurrentUserQuery } from "@/features/user/userApiSlice.js";
 import { setCredentials } from "@/features/auth/authSlice.js";
 import { useDispatch } from "react-redux";
+import { useGetCurrentUserQuery } from "@/features/auth/authApiSlice.js";
 
 export const LoadAuth = ({ children }) => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     const accessToken = sessionStorage.getItem("accessToken");
     if (accessToken) {
@@ -13,7 +12,7 @@ export const LoadAuth = ({ children }) => {
     }
   }, [dispatch]);
 
-  const { isLoading } = useCurrentUserQuery();
+  const { isLoading } = useGetCurrentUserQuery();
   if (isLoading) return <div>Loading...</div>;
 
   return children;
