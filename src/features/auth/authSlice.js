@@ -6,6 +6,9 @@ const authSlice = createSlice({
   initialState: {
     accessToken: null,
     user: null,
+    profile: null,
+    isAuthenticated: false,
+    isTokenRefreshing: false,
   },
   reducers: {
     setCredentials: (state, action) => {
@@ -14,6 +17,13 @@ const authSlice = createSlice({
     },
     logOut: (state, action) => {
       state.accessToken = null;
+      state.user = null;
+      state.isAuthenticated = false;
+      state.profile = null;
+      sessionStorage.removeItem("accessToken");
+    },
+    setTokenRefreshing: (state, action) => {
+      state.isTokenRefreshing = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -23,20 +33,33 @@ const authSlice = createSlice({
         (state, action) => {
           const { accessToken } = action.payload;
           state.accessToken = accessToken;
+          state.isAuthenticated = true;
         }
       )
       .addMatcher(
         authApiSlice.endpoints.getCurrentUser.matchFulfilled,
         (state, action) => {
           state.user = action.payload;
+          state.isAuthenticated = true;
+        }
+      )
+      .addMatcher(
+        authApiSlice.endpoints.getCurrentProfile.matchFulfilled,
+        (state, action) => {
+          console.log("LOOOKING HEREEEEE", action.payload);
+          state.profile = action.payload;
+          state.isAuthenticated = true;
         }
       );
   },
 });
 
-export const { setCredentials, logOut } = authSlice.actions;
+export const { setCredentials, logOut, setTokenRefreshing } = authSlice.actions;
 
 export default authSlice.reducer;
 
-export const selectCurrentUser = (state) => state.auth.user.email;
-export const selectCurrentToken = (state) => state.auth.accessToken;
+export const selectIsTokenRefreshing = (state) => state.auth.isTokenRefreshing;
+export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;
+export const selectCurrentUser = (state) => state.auth.user;
+export const selectCurrentProfile = (state) => state.auth.profile;
+export const selectCurrentToken = (state) => state.auth?.accessToken;
