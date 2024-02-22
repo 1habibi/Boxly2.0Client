@@ -1,114 +1,52 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Form, Input } from "antd";
-import { LockOutlined, MailOutlined } from "@ant-design/icons";
+import React from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import {
-  useGetCurrentUserQuery,
+  useLazyGetCurrentProfileQuery,
+  useLazyGetCurrentUserQuery,
   useLoginMutation,
 } from "@/features/auth/authApiSlice.js";
 import { PATH } from "@/router/index.jsx";
+import { LoginForm } from "@/pages/Login/LoginForm/LoginForm.jsx";
 
 export const Login = () => {
-  const userRef = useRef();
-  const errRef = useRef();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-
+  const [login, { isLoading: isLoginLoading }] = useLoginMutation();
+  const [getCurrentUser, { isFetching: isCurrentUserLoading }] =
+    useLazyGetCurrentUserQuery();
+  const [getCurrentProfile, { isFetching: isCurrentProfileLoading }] =
+    useLazyGetCurrentProfileQuery();
   const navigate = useNavigate();
-  const [login, { isLoading }] = useLoginMutation();
+  const [errMsg, setErrMsg] = React.useState("");
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    setErrMsg("");
-  }, [email, password]);
-
-  const { data: user, refetch: getCurrentUser } = useGetCurrentUserQuery();
-
-  const handleSubmit = async ({ email, password }) => {
+  const handleSubmit = async (values) => {
     try {
-      const userData = await login({ email, password }).unwrap();
-      console.log("userDataFromHandleSubmit:", userData);
-      const userDetails = await getCurrentUser().unwrap();
-      console.log("userDetailsFromHandleSubmit:", userDetails);
-      setEmail("");
-      setPassword("");
+      await login(values).unwrap();
+      const userDetails = await getCurrentUser();
+      await getCurrentProfile(userDetails.data.id);
       navigate(PATH.HOME);
     } catch (e) {
       setErrMsg("Неверный логин или пароль");
     }
   };
-  const handleUserImport = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePwdImport = (e) => {
-    setPassword(e.target.value);
-  };
 
-  if (isLoading) return <h1>Загрузка...</h1>;
+  if (isLoginLoading || isCurrentProfileLoading || isCurrentUserLoading)
+    return (
+      <div>
+        <h1>
+          Загрузка...
+          <LoadingOutlined style={{ marginLeft: "10px" }} />
+        </h1>
+      </div>
+    );
 
   return (
     <>
-      <Form
-        name="login"
+      <h1>Вход в систему</h1>
+      <LoginForm
         onFinish={handleSubmit}
-        initialValues={{ email: "test2@mail.ru", password: "123456" }}
-      >
-        <Form.Item
-          name="email"
-          rules={[
-            {
-              type: "email",
-              message: "Невалидная почта",
-            },
-            {
-              required: true,
-              message: "Обязательное поле",
-            },
-          ]}
-        >
-          <Input
-            prefix={<MailOutlined />}
-            placeholder="Адрес эл.почты"
-            onChange={handleUserImport}
-            value={email}
-            ref={userRef}
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Обязательное поле",
-            },
-          ]}
-        >
-          <Input
-            prefix={<LockOutlined />}
-            type="password"
-            placeholder="Пароль"
-            onChange={handlePwdImport}
-            value={password}
-          />
-        </Form.Item>
-        <p style={{ color: "red", fontSize: "16px" }} ref={errRef}>
-          {errMsg}
-        </p>
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Вход
-          </Button>
-        </Form.Item>
-      </Form>
+        isLoading={isLoginLoading}
+        errMsg={errMsg}
+      />
     </>
   );
 };
