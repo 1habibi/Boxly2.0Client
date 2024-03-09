@@ -4,11 +4,6 @@ body{
   background-color: $light;
 }
 
-.container{
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .header{
   background-color: $light;
   display: flex;
@@ -17,19 +12,24 @@ body{
   padding: 0;
 }
 
-.headerRight{
-  display: flex;
-  align-items: center;
-}
-
 .appLayout{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+
   overflow: hidden;
   max-width: 1380px;
   margin: 0 auto;
   padding: 0 40px;
   background-color: inherit;
 }
-.appMenu{
-  display: none;
+
+.content{
+  flex-grow: 1;
 }
 
+.footer{
+  margin: 0 auto;
+  font-size: 16px;
+}
