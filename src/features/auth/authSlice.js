@@ -46,9 +46,14 @@ const authSlice = createSlice({
       .addMatcher(
         authApiSlice.endpoints.getCurrentProfile.matchFulfilled,
         (state, action) => {
-          console.log("LOOOKING HEREEEEE", action.payload);
           state.profile = action.payload;
           state.isAuthenticated = true;
+        }
+      )
+      .addMatcher(
+        authApiSlice.endpoints.unlinkTelegram.matchFulfilled,
+        (state, action) => {
+          state.profile.telegramId = null;
         }
       );
   },

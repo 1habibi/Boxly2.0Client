@@ -56,10 +56,25 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body: { ...profileData },
       }),
     }),
+    linkTelegram: builder.mutation({
+      query: (telegramData) => ({
+        url: `/telegram/link`,
+        method: "PATCH",
+        body: { ...telegramData },
+      }),
+    }),
+    unlinkTelegram: builder.mutation({
+      query: () => ({
+        url: "/telegram/unlink",
+        method: "PATCH",
+      }),
+    }),
   }),
 });
 
 export const {
+  useUnlinkTelegramMutation,
+  useLinkTelegramMutation,
   useLoginMutation,
   useRegisterMutation,
   useRefreshAccessTokenQuery,
