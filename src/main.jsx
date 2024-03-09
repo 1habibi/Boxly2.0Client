@@ -13,10 +13,19 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     theme={{
       token: {
         colorPrimary: "#E56427",
+        // colorError: "#ff0000",
+        colorAccent: "#1E796A",
+        colorDark: "#031D2A",
       },
       components: {
         Menu: {
           colorBgContainer: "inherit",
+        },
+        Alert: {
+          defaultPadding: "10px 12px",
+        },
+        Layout: {
+          footerBg: "inherit",
         },
       },
     }}
