@@ -1,34 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
 import { PATH } from "@/router/index.jsx";
+import s from "./AppMenu.module.scss";
 
 const menuItems = [
   {
-    label: <Link to={PATH.HOME}>Home</Link>,
+    label: (
+      <Link className={s.link} to={PATH.HOME}>
+        Home
+      </Link>
+    ),
     key: "home",
   },
   {
-    label: <Link to={PATH.WELCOME}>Welcome</Link>,
+    label: (
+      <Link className={s.link} to={PATH.WELCOME}>
+        Welcome
+      </Link>
+    ),
     key: "welcome",
   },
   {
-    label: <Link to={PATH.USER_ME}>Me</Link>,
+    label: (
+      <Link className={s.link} to={PATH.USER_ME}>
+        Me
+      </Link>
+    ),
     key: "me",
   },
+  {
+    label: (
+      <Link className={s.link} to={PATH.MY_ORDERS}>
+        Мои заказы
+      </Link>
+    ),
+    key: "my_orders",
+  },
 ];
-export const AppMenu = () => {
+export const AppMenu = ({ mode = "horizontal" }) => {
+  const [current, setCurrent] = useState("home");
+  const onClick = (e) => {
+    setCurrent(e.key);
+  };
+
   return (
     <Menu
-      mode={"horizontal"}
-      defaultSelectedKeys={["1"]}
+      onClick={onClick}
+      mode={mode}
+      defaultSelectedKeys={[current]}
       items={menuItems}
       style={{
-        minWidth: 0,
+        width: "100%",
         border: 0,
         fontSize: "18px",
-        marginRight: "30px",
-        marginLeft: "auto",
+        marginLeft: "30px",
+        marginRight: "auto",
       }}
     />
   );
