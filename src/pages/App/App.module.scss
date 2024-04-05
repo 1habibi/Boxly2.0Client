@@ -1,22 +1,21 @@
 @import "@/styles/colors";
 
-body{
-  background-color: $light;
+body {
+  // background-color: $light;
 }
 
-.header{
-  background-color: $light;
+.header {
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0;
 }
 
-.appLayout{
+.appLayout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
 
   overflow: hidden;
   max-width: 1380px;
@@ -25,11 +24,11 @@ body{
   background-color: inherit;
 }
 
-.content{
+.content {
   flex-grow: 1;
 }
 
-.footer{
+.footer {
   margin: 0 auto;
   font-size: 16px;
 }
