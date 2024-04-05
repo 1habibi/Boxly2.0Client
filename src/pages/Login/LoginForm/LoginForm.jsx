@@ -16,7 +16,7 @@ export const LoginForm = ({ onFinish, isLoading, errMsg }) => {
         form={form}
         name="login"
         onFinish={onFinish}
-        initialValues={{ email: "test2@mail.ru", password: "123456" }}
+        initialValues={{ email: "test2@mail.ru", password: "1234567A&" }}
       >
         <Form.Item
           name="email"
