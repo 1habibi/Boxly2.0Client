@@ -15,22 +15,6 @@ const menuItems = [
   },
   {
     label: (
-      <Link className={s.link} to={PATH.WELCOME}>
-        Welcome
-      </Link>
-    ),
-    key: "welcome",
-  },
-  {
-    label: (
-      <Link className={s.link} to={PATH.USER_ME}>
-        Me
-      </Link>
-    ),
-    key: "me",
-  },
-  {
-    label: (
       <Link className={s.link} to={PATH.MY_ORDERS}>
         Мои заказы
       </Link>

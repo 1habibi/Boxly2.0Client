@@ -7,6 +7,27 @@ import { Provider } from "react-redux";
 import { ConfigProvider } from "antd";
 import { BrowserRouter } from "react-router-dom";
 import { LoadAuth } from "@/utils/LoadAuth/LoadAuth.jsx";
+import { IKContext } from "imagekitio-react";
+
+const urlEndpoint = import.meta.env.VITE_IMAGEKIT_URL_ENDPOINT;
+const publicKey = import.meta.env.VITE_IMAGEKIT_PUBLIC_KEY;
+
+const authenticator = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/image-kit/auth");
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `Request failed with status ${response.status}: ${errorText}`
+      );
+    }
+    const data = await response.json();
+    const { signature, expire, token } = data;
+    return { signature, expire, token };
+  } catch (error) {
+    throw new Error(`Authentication request failed: ${error.message}`);
+  }
+};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ConfigProvider
@@ -33,7 +54,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <LoadAuth>
         <BrowserRouter>
-          <App />
+          <IKContext
+            urlEndpoint={urlEndpoint}
+            publicKey={publicKey}
+            authenticator={authenticator}
+          >
+            <App />
+          </IKContext>
         </BrowserRouter>
       </LoadAuth>
     </Provider>
