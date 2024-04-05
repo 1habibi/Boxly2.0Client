@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, message, theme } from "antd";
 import moment from "moment";
+
 const { useToken } = theme;
 import {
   useCreateProfileMutation,
@@ -53,16 +54,19 @@ export const Profile = () => {
 
   return (
     <div>
-      <h1>Ваш профиль</h1>
       <div
         style={{
-          margin: "0 auto",
-          borderRadius: "20px",
-          padding: "10px 30px",
+          margin: "30px auto 50px",
+          padding: "20px 40px",
           marginBottom: "30px",
+          borderRadius: "40px",
+          background: "rgba(245, 245, 253, 0.3)",
+          boxShadow: "5px 5px 13px #f0f0f8, -5px -5px 13px #fafaff",
         }}
       >
-        <p style={{ fontSize: "24px", margin: "0 0 10px 0" }}>
+        <p
+          style={{ fontSize: "30px", margin: "0 0 30px 0", fontWeight: "500" }}
+        >
           Реквизиты для доставки
         </p>
         <ProfileForm
@@ -88,8 +92,10 @@ export const Profile = () => {
       <div
         style={{
           margin: "0 auto",
-          borderRadius: "30px",
-          padding: "10px 30px",
+          padding: "20px 40px",
+          borderRadius: "40px",
+          background: "rgba(245, 245, 253, 0.3)",
+          boxShadow: "5px 5px 13px #f0f0f8, -5px -5px 13px #fafaff",
         }}
       >
         <p style={{ fontSize: "24px", margin: "0 0 10px 0" }}>
