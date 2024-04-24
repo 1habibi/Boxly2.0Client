@@ -1,39 +1,52 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Button, message, theme } from "antd";
+import { Button, message, notification, theme } from "antd";
 import moment from "moment";
-
-const { useToken } = theme;
 import {
   useCreateProfileMutation,
   useEditProfileMutation,
+  useGetCurrentProfileQuery,
+  useGetCurrentUserQuery,
   useUnlinkTelegramMutation,
 } from "@/features/auth/authApiSlice.js";
-import { selectCurrentProfile } from "@/features/auth/authSlice.js";
 import { ProfileForm } from "@/pages/Profile/ProfileForm/ProfileForm.jsx";
 import { TelegramLoginButton } from "@/copmonents/TelegramLoginButton/TelegramLoginButton.jsx";
+const { useToken } = theme;
 
 export const Profile = () => {
   const { token } = useToken();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const profile = useSelector(selectCurrentProfile);
+  const { data: user } = useGetCurrentUserQuery();
+  const { data: profile, isLoading } = useGetCurrentProfileQuery(user.id);
   const [createProfile] = useCreateProfileMutation();
   const [editProfile] = useEditProfileMutation();
   const [unlinkTelegram] = useUnlinkTelegramMutation();
+
+  if (isLoading) {
+    return <div>Загрузка...</div>;
+  }
 
   const handleProfileSubmit = async (profileData, id) => {
     setIsSubmitting(true);
     try {
       if (id) {
         await editProfile({ profileData, id }).unwrap();
-        message.success("Профиль успешно отредактирован.");
+        notification.success({
+          message: "Успех",
+          description: "Профиль успешно отредактирован",
+        });
       } else {
         await createProfile(profileData).unwrap();
-        message.success("Профиль успешно создан.");
+        notification.success({
+          message: "Успех",
+          description: "Профиль успешно создан",
+        });
       }
     } catch (e) {
       console.error("Ошибка сохранения профиля: ", e);
-      message.error("Произошла ошибка при сохранении профиля.");
+      notification.error({
+        message: "Ошибка",
+        description: "Произошла ошибка при сохранении профиля.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -43,10 +56,16 @@ export const Profile = () => {
     setIsSubmitting(true);
     try {
       await unlinkTelegram().unwrap();
-      message.success("Telegram профиль успешно отвязан.");
+      notification.success({
+        message: "Успех",
+        description: "Telegram профиль успешно отвязан.",
+      });
     } catch (e) {
       console.error("Ошибка отвязки: ", e);
-      message.error("Произошла ошибка при отвязке Telegram.");
+      notification.error({
+        message: "Ошибка",
+        description: "Произошла ошибка при отвязке Telegram.",
+      });
     } finally {
       setIsSubmitting(false);
     }

@@ -28,5 +28,17 @@ export const Register = () => {
     }
   };
 
-  return <RegisterForm onFinish={handleSubmit} isLoading={isLoading} />;
+  return (
+    <div>
+      <div
+        style={{
+          width: "70%",
+          margin: "0 auto",
+        }}
+      >
+        <h1>Регистрация</h1>
+        <RegisterForm onFinish={handleSubmit} isLoading={isLoading} />
+      </div>
+    </div>
+  );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { selectCurrentProfile } from "@/features/auth/authSlice.js";
 import { useSelector } from "react-redux";
 import { Alert, Button, Col, Row, theme } from "antd";
 import { PATH } from "@/router/index.jsx";
@@ -7,11 +6,16 @@ import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { DownCircleOutlined } from "@ant-design/icons";
 import s from "./Home.module.scss";
+import {
+  useGetCurrentProfileQuery,
+  useGetCurrentUserQuery,
+} from "@/features/auth/authApiSlice.js";
 const { useToken } = theme;
 
 export const Home = () => {
   const { token } = useToken();
-  const profile = useSelector(selectCurrentProfile);
+  const { data: user } = useGetCurrentUserQuery();
+  const { data: profile } = useGetCurrentProfileQuery(user?.id);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   return (

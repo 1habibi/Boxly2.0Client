@@ -8,6 +8,7 @@ import {
 } from "@/features/auth/authApiSlice.js";
 import { PATH } from "@/router/index.jsx";
 import { LoginForm } from "@/pages/Login/LoginForm/LoginForm.jsx";
+import { RegisterForm } from "@/pages/Register/RegisterForm/RegisterForm.jsx";
 
 export const Login = () => {
   const [login, { isLoading: isLoginLoading }] = useLoginMutation();
@@ -41,12 +42,19 @@ export const Login = () => {
 
   return (
     <>
-      <h1>Вход в систему</h1>
-      <LoginForm
-        onFinish={handleSubmit}
-        isLoading={isLoginLoading}
-        errMsg={errMsg}
-      />
+      <div
+        style={{
+          width: "70%",
+          margin: "0 auto",
+        }}
+      >
+        <h1>Вход</h1>
+        <LoginForm
+          onFinish={handleSubmit}
+          isLoading={isLoginLoading}
+          errMsg={errMsg}
+        />
+      </div>
     </>
   );
 };

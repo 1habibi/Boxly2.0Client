@@ -34,7 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     theme={{
       token: {
         colorPrimary: "#E56427",
-        // colorError: "#ff0000",
+        colorError: "#ee4040",
         colorAccent: "#1E796A",
         colorDark: "#031D2A",
       },

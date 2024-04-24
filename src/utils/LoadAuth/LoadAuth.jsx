@@ -22,14 +22,30 @@ export const LoadAuth = ({ children }) => {
     }
   }, [dispatch]);
 
-  const currentUser = useSelector(selectCurrentUser);
-  console.log("current user from load auth", currentUser);
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    isError: isUserError,
+  } = useGetCurrentUserQuery(undefined, {
+    skip: !sessionStorage.getItem("accessToken"),
+  });
+  const {
+    data: profile,
+    isLoading: isProfileLoading,
+    isError: isProfileError,
+  } = useGetCurrentProfileQuery(user?.id, {
+    skip: !user,
+  });
 
-  const { isLoading: isUserLoading } = useGetCurrentUserQuery();
-  const { isLoading: isProfileLoading } = useGetCurrentProfileQuery(
-    currentUser?.id
-  );
-  if (isUserLoading || isProfileLoading || isTokenRefreshing)
+  const isLoading = isUserLoading || isProfileLoading || isTokenRefreshing;
+  const hasError = isUserError || isProfileError;
+
+  if ((hasError || !profile || !user) && !isLoading) {
+    // Handle the case when user or profile data is not available
+    return children;
+  }
+
+  if (isLoading)
     return (
       <div>
         <div
