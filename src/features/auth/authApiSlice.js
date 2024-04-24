@@ -41,6 +41,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: `/profile/${id}`,
         method: "GET",
       }),
+      providesTags: ["Profile"],
     }),
     createProfile: builder.mutation({
       query: (profileData) => ({
@@ -48,6 +49,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...profileData },
       }),
+      invalidatesTags: ["Profile"],
     }),
     editProfile: builder.mutation({
       query: ({ profileData, id }) => ({
@@ -55,6 +57,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "PATCH",
         body: { ...profileData },
       }),
+      invalidatesTags: ["Profile"],
     }),
     linkTelegram: builder.mutation({
       query: (telegramData) => ({

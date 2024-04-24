@@ -20,8 +20,13 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
+  const accessToken = sessionStorage.getItem("accessToken");
 
-  if (result?.error?.status === 401 && args.url !== "/auth/login") {
+  if (
+    result?.error?.status === 401 &&
+    args.url !== "/auth/login" &&
+    accessToken
+  ) {
     console.log("sending refresh token");
     // send refresh token to get new access token
     const refreshResult = await baseQuery("/auth/refresh-tokens", api, {
@@ -48,5 +53,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
+  tagTypes: ["Order", "Profile"],
   endpoints: (builder) => ({}),
 });
