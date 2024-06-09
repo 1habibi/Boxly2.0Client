@@ -1,0 +1,28 @@
+.hr {
+	margin: 18px 0;
+	border: none;
+	height: 1px;
+	background-color: #f5f5f5;
+}
+
+.menu {
+	border: 0px !important;
+	display: flex;
+	flex-direction: column;
+	row-gap: 7px;
+}
+
+.menuItem {
+}
+
+.navLink {
+	display: flex;
+	column-gap: 7px;
+	font-size: 18px;
+}
+
+.navLinkIcon {
+}
+
+.navLinkTitle {
+}
