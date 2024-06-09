@@ -1,0 +1,23 @@
+.header {
+	background-color: white;
+}
+
+.sider {
+	width: 250px;
+	position: fixed;
+	left: 0;
+	z-index: 99;
+	height: 100vh;
+	overflow: auto;
+	margin: 0;
+	padding: 33px 20px;
+}
+
+.content {
+	background-color: #fff;
+	padding: 20px 40px;
+}
+
+.footer {
+	background-color: #fff;
+}
