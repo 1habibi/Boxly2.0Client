@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Dropdown, theme } from "antd";
 import s from "./LoginGroup.module.scss";
 import { Link } from "react-router-dom";
-import { PATH } from "@/router/index.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	logOut,
@@ -13,6 +12,7 @@ import {
 	useGetCurrentProfileQuery,
 	useGetCurrentUserQuery
 } from "@/features/auth/authApiSlice.js";
+import { PATH } from "@/router/paths";
 const { useToken } = theme;
 
 export const LoginGroup = () => {
@@ -46,7 +46,7 @@ export const LoginGroup = () => {
 			label: (
 				<Link
 					style={{ fontWeight: 600, color: token.colorPrimary }}
-					to={PATH.ADMIN_PANEL}
+					to={PATH.ADMIN_DASHBOARD}
 				>
 					Админ панель
 				</Link>
