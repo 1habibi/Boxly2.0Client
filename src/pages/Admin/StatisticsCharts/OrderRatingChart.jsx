@@ -1,7 +1,4 @@
-import { LineGraph } from "@/copmonents/Charts/Line";
 import { PieChart } from "@/copmonents/Charts/Pie";
-import { DatePicker } from "antd";
-import React, { useState } from "react";
 
 const OrdersRatingChart = ({ orders }) => {
 	const labels = [1, 2, 3, 4, 5];

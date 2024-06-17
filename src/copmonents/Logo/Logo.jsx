@@ -1,7 +1,6 @@
-import React from "react";
 import s from "./Logo.module.scss";
-import { Link } from "react-router-dom";
 import { PATH } from "@/router/paths";
+import { Link } from "react-router-dom";
 
 export const Logo = () => {
 	return (

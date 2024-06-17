@@ -5,7 +5,6 @@ import {
 	MailOutlined
 } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
-import React from "react";
 
 export const ChangeEmailForm = ({ onFinish, isSubmitting }) => {
 	return (

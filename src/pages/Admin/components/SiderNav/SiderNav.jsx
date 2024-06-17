@@ -1,13 +1,9 @@
+import s from "./SiderNav.module.scss";
 import { Logo } from "@/copmonents/Logo/Logo";
-import {
-	BarChartOutlined,
-	CodeSandboxOutlined,
-	UserOutlined
-} from "@ant-design/icons";
+import { PATH } from "@/router/paths";
+import { BarChartOutlined, CodeSandboxOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import { NavLink } from "react-router-dom";
-import s from "./SiderNav.module.scss";
-import { PATH } from "@/router/paths";
 
 const menuItems = [
 	{

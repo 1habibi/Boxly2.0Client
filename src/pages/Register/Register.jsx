@@ -1,10 +1,8 @@
 import { useRegisterMutation } from "@/features/auth/authApiSlice.js";
 import { RegisterForm } from "@/pages/Register/RegisterForm/RegisterForm.jsx";
 import { PATH } from "@/router/paths";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { notification } from "antd";
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";
 

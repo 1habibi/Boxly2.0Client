@@ -7,10 +7,7 @@ import {
 } from "@ant-design/icons";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { Button, Form, Input } from "antd";
-import React from "react";
 import { Link } from "react-router-dom";
-
-import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";
 
 export const RegisterForm = ({ onFinish, isLoading }) => {
 	const handleVerificationSuccess = (token, ekey) => {

@@ -1,14 +1,14 @@
-import React from "react";
-import { LoadingOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 import {
 	useLazyGetCurrentProfileQuery,
 	useLazyGetCurrentUserQuery,
 	useLoginMutation
 } from "@/features/auth/authApiSlice.js";
 import { LoginForm } from "@/pages/Login/LoginForm/LoginForm.jsx";
-import { RegisterForm } from "@/pages/Register/RegisterForm/RegisterForm.jsx";
 import { PATH } from "@/router/paths";
+import { LoadingOutlined } from "@ant-design/icons";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";
 
 export const Login = () => {

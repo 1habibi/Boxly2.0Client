@@ -1,15 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Alert, Button, Col, Row, theme } from "antd";
-import { Link } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
-import { DownCircleOutlined } from "@ant-design/icons";
 import s from "./Home.module.scss";
 import {
 	useGetCurrentProfileQuery,
 	useGetCurrentUserQuery
 } from "@/features/auth/authApiSlice.js";
 import { PATH } from "@/router/paths";
+import { DownCircleOutlined } from "@ant-design/icons";
+import { Alert, Button, Col, Row, theme } from "antd";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
+
 const { useToken } = theme;
 
 export const Home = () => {

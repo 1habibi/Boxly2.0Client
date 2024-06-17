@@ -1,18 +1,14 @@
-import React from "react";
-import { Button, Dropdown, theme } from "antd";
 import s from "./LoginGroup.module.scss";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-	logOut,
-	selectCurrentUser,
-	selectIsAuthenticated
-} from "@/features/auth/authSlice.js";
 import {
 	useGetCurrentProfileQuery,
 	useGetCurrentUserQuery
 } from "@/features/auth/authApiSlice.js";
+import { logOut, selectIsAuthenticated } from "@/features/auth/authSlice.js";
 import { PATH } from "@/router/paths";
+import { Button, Dropdown, theme } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 const { useToken } = theme;
 
 export const LoginGroup = () => {

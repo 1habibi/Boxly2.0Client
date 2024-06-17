@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Button, Col, message, notification, Row, theme } from "antd";
-import moment from "moment";
+import { ChangeEmailForm } from "./ChangeEmailForm/ChangeEmailForm";
+import { ChangePasswordForm } from "./ChangePasswordForm/ChangePasswordForm";
+import { TelegramLoginButton } from "@/copmonents/TelegramLoginButton/TelegramLoginButton.jsx";
 import {
 	useCreateProfileMutation,
 	useEditProfileMutation,
@@ -8,15 +8,17 @@ import {
 	useGetCurrentUserQuery,
 	useUnlinkTelegramMutation
 } from "@/features/auth/authApiSlice.js";
-import { ProfileForm } from "@/pages/Profile/ProfileForm/ProfileForm.jsx";
-import { TelegramLoginButton } from "@/copmonents/TelegramLoginButton/TelegramLoginButton.jsx";
-import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";
-import { ChangeEmailForm } from "./ChangeEmailForm/ChangeEmailForm";
 import {
 	useEditUserMutation,
 	useEditUserPasswordMutation
 } from "@/features/users/userApiSlice";
-import { ChangePasswordForm } from "./ChangePasswordForm/ChangePasswordForm";
+import { ProfileForm } from "@/pages/Profile/ProfileForm/ProfileForm.jsx";
+import { Button, Col, Row, notification, theme } from "antd";
+import moment from "moment";
+import { useState } from "react";
+
+import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";
+
 const { useToken } = theme;
 
 export const Profile = () => {

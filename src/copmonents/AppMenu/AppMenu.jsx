@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Menu } from "antd";
-import { Link, useLocation } from "react-router-dom";
 import s from "./AppMenu.module.scss";
 import { PATH } from "@/router/paths";
+import { Menu } from "antd";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const menuItems = [
 	{

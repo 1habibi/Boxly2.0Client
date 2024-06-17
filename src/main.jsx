@@ -1,12 +1,13 @@
-import { LoadAuth } from "@/utils/LoadAuth/LoadAuth.jsx";
+import { store } from "./app/store.js";
+import { routes } from "./router/index.jsx";
+import "./styles/index.css";
 import { ConfigProvider } from "antd";
 import { IKContext } from "imagekitio-react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "./app/store.js";
-import { routes } from "./router/index.jsx";
-import "./styles/index.css";
+
+import { LoadAuth } from "@/utils/LoadAuth/LoadAuth.jsx";
 
 const urlEndpoint = import.meta.env.VITE_IMAGEKIT_URL_ENDPOINT;
 const publicKey = import.meta.env.VITE_IMAGEKIT_PUBLIC_KEY;

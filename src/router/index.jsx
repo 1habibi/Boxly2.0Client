@@ -1,3 +1,4 @@
+import { PATH } from "./paths";
 import AdminLayout from "@/pages/Admin/AdminLayout/AdminLayout";
 import Dashboard from "@/pages/Admin/Dashboard";
 import Orders from "@/pages/Admin/Orders/Orders";
@@ -12,10 +13,10 @@ import NewOrderQR from "@/pages/Orders/NewOrder/NewOrderQR";
 import OrderDetails from "@/pages/Orders/OrderDetails/OrderDetails";
 import { Profile } from "@/pages/Profile/Profile.jsx";
 import { Register } from "@/pages/Register/Register.jsx";
+import { Route, Routes } from "react-router-dom";
+
 import { RequireAdmin } from "@/utils/RequireAuth/RequireAdmin";
 import { RequireAuth } from "@/utils/RequireAuth/RequireAuth";
-import { Route, Routes } from "react-router-dom";
-import { PATH } from "./paths";
 
 export const routes = () => (
 	<Routes>

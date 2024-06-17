@@ -1,7 +1,6 @@
 import { HomeOutlined, PhoneOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import dayjs from "dayjs";
-import React from "react";
 import InputMask from "react-input-mask";
 
 export const ProfileForm = ({ onFinish, initialValues, isSubmitting }) => (

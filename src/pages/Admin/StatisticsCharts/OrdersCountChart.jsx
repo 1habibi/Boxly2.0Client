@@ -1,6 +1,6 @@
 import { BarChart } from "@/copmonents/Charts/Bar";
 import { DatePicker } from "antd";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const OrdersCountChart = ({ orders }) => {
 	const [rangeDate, setRangeDate] = useState([]);

@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
-import { IKUpload } from "imagekitio-react";
 import { usePostOrderQrMutation } from "@/features/order/orderApiSlice";
-import { Button, Col, notification, Progress, Row } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { Button, Col, Progress, Row, notification } from "antd";
+import { IKUpload } from "imagekitio-react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";
 
 const NewOrderQR = () => {

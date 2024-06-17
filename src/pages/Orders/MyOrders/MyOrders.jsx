@@ -6,11 +6,8 @@ import {
 } from "@/features/auth/authApiSlice.js";
 import { useGetUserOrdersQuery } from "@/features/order/orderApiSlice.js";
 import OrderModal from "@/pages/Orders/OrderModal/OrderModal.jsx";
-import { PATH } from "@/router/paths";
-import { theme } from "antd";
-import { Button } from "antd";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Button, theme } from "antd";
+import { useState } from "react";
 
 const { useToken } = theme;
 

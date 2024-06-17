@@ -1,8 +1,7 @@
-import React from "react";
+import { PATH } from "@/router/paths";
+import { BarcodeOutlined, FileAddOutlined } from "@ant-design/icons";
 import { Button, Col, Modal, Row } from "antd";
 import { Link } from "react-router-dom";
-import { BarcodeOutlined, FileAddOutlined } from "@ant-design/icons";
-import { PATH } from "@/router/paths";
 
 const OrderModal = ({ modalOpen, closeModal }) => (
 	<Modal

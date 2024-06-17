@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Alert, Button, Form, Input } from "antd";
+import { PATH } from "@/router/paths";
 import {
 	EyeInvisibleOutlined,
 	EyeOutlined,
-	EyeTwoTone,
 	LockOutlined,
 	MailOutlined
 } from "@ant-design/icons";
-import { PATH } from "@/router/paths";
+import { Alert, Button, Form, Input } from "antd";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export const LoginForm = ({ onFinish, isLoading, errMsg }) => {

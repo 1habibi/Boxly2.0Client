@@ -1,6 +1,6 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Popover } from "antd";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const DeleteOrderButton = ({ handleDeleteOrderConfirm, type = "primary" }) => {
 	const [showConfirmPopover, setShowConfirmPopover] = useState(false);

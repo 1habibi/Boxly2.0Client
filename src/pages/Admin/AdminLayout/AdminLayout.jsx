@@ -1,10 +1,10 @@
+import SiderNav from "../components/SiderNav/SiderNav";
+import s from "./AdminLayout.module.scss";
 import { HeartFilled } from "@ant-design/icons";
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
-import SiderNav from "../components/SiderNav/SiderNav";
-import s from "./AdminLayout.module.scss";
 
-const { Header, Footer, Content, Sider } = Layout;
+const { Footer, Content, Sider } = Layout;
 
 export default function AdminLayout() {
 	return (

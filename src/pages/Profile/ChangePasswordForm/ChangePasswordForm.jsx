@@ -1,11 +1,9 @@
 import {
 	EyeInvisibleOutlined,
 	EyeOutlined,
-	LockOutlined,
-	MailOutlined
+	LockOutlined
 } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
-import React from "react";
 
 export const ChangePasswordForm = ({ onFinish, isSubmitting }) => {
 	return (

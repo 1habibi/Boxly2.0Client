@@ -1,24 +1,9 @@
-import { useGetAllOrdersQuery } from "@/features/order/orderApiSlice";
-import {
-	Button,
-	DatePicker,
-	Dropdown,
-	Form,
-	Input,
-	Menu,
-	Modal,
-	Space,
-	Table,
-	Tooltip
-} from "antd";
-import s from "./Orders.module.scss";
-import { StatusDescription } from "@/utils/StatusDescription/statusDescription";
-import { DownOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import s_orderStatus from "@/utils/OrderStatus.module.scss";
-import { useState } from "react";
-import dayjs from "dayjs";
 import { EditOrderModal } from "./EditOrderModal/EditOrderModal";
 import { OrdersTable } from "./OrdersTable/OrdersTable";
+import { useGetAllOrdersQuery } from "@/features/order/orderApiSlice";
+import { DatePicker } from "antd";
+import dayjs from "dayjs";
+import { useState } from "react";
 
 export default function Orders() {
 	const { data: orders, isLoading } = useGetAllOrdersQuery();

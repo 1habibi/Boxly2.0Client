@@ -25,7 +25,7 @@ import {
 	message
 } from "antd";
 import { IKImage } from "imagekitio-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";

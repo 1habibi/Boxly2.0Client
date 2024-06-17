@@ -1,34 +1,34 @@
 @import "@/styles/colors";
 
 body {
-  // background-color: $light;
+	// background-color: $light;
 }
 
 .header {
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0;
 }
 
 .appLayout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 
-  overflow: hidden;
-  max-width: 1380px;
-  margin: 0 auto;
-  padding: 0 40px;
-  background-color: inherit;
+	overflow: hidden;
+	max-width: 1380px;
+	margin: 0 auto;
+	padding: 0 40px;
+	background-color: inherit;
 }
 
 .content {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 
 .footer {
-  margin: 0 auto;
-  font-size: 16px;
+	margin: 0 auto;
+	font-size: 16px;
 }

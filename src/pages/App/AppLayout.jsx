@@ -1,10 +1,11 @@
+import s from "./App.module.scss";
 import { AppMenu } from "@/copmonents/AppMenu/AppMenu";
 import { LoginGroup } from "@/copmonents/LoginGroup/LoginGroup.jsx";
 import { Logo } from "@/copmonents/Logo/Logo.jsx";
 import { Button, Drawer, Layout } from "antd";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import s from "./App.module.scss";
+
 const { Header, Footer, Content } = Layout;
 
 function AppLayout() {

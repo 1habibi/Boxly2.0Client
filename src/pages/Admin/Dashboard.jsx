@@ -1,13 +1,9 @@
 import NewUsersChart from "./StatisticsCharts/NewUsersChart";
 import OrdersRatingChart from "./StatisticsCharts/OrderRatingChart";
 import OrdersCountChart from "./StatisticsCharts/OrdersCountChart";
-import { LineGraph } from "@/copmonents/Charts/Line";
 import { useGetAllOrdersQuery } from "@/features/order/orderApiSlice";
 import { useGetAllUsersQuery } from "@/features/users/userApiSlice";
-import { Col, DatePicker, Row } from "antd";
-import dayjs from "dayjs";
-import { useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { Col, Row } from "antd";
 
 import { BlockBackground } from "@/utils/BlockBackground/BlockBackground";
 

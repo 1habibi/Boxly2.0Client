@@ -1,3 +1,5 @@
+import { useEditOrderMutation } from "@/features/order/orderApiSlice";
+import { useGetAllCouriersQuery } from "@/features/users/userApiSlice";
 import {
 	Button,
 	Divider,
@@ -5,14 +7,13 @@ import {
 	Input,
 	InputNumber,
 	Modal,
-	notification,
-	Select
+	Select,
+	notification
 } from "antd";
-import { ORDER_STATUSES } from "@/utils/OrderStatuses";
-import { useGetAllCouriersQuery } from "@/features/users/userApiSlice";
-import { useEffect, useState } from "react";
 import { useForm } from "antd/es/form/Form";
-import { useEditOrderMutation } from "@/features/order/orderApiSlice";
+import { useEffect, useState } from "react";
+
+import { ORDER_STATUSES } from "@/utils/OrderStatuses";
 
 export const EditOrderModal = ({ selectedOrder, onCancel }) => {
 	const [form] = useForm();

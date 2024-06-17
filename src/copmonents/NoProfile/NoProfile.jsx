@@ -1,7 +1,5 @@
-import React from "react";
 import { PATH } from "@/router/paths";
-import { Button } from "antd";
-import { theme } from "antd";
+import { Button, theme } from "antd";
 import { Link } from "react-router-dom";
 
 const { useToken } = theme;

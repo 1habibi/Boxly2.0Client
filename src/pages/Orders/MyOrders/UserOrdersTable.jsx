@@ -2,7 +2,6 @@ import s from "./MyOrders.module.scss";
 import { PATH } from "@/router/paths";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import { Button, Table, Tooltip } from "antd";
-import React from "react";
 import { Link } from "react-router-dom";
 
 import s_orderStatus from "@/utils/OrderStatus.module.scss";

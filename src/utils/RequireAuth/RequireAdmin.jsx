@@ -1,9 +1,4 @@
-import {
-	useGetCurrentProfileQuery,
-	useGetCurrentUserQuery
-} from "@/features/auth/authApiSlice";
-import { selectCurrentProfile } from "@/features/auth/authSlice";
-import { useSelector } from "react-redux";
+import { useGetCurrentUserQuery } from "@/features/auth/authApiSlice";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 export const RequireAdmin = () => {
